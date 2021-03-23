@@ -46,6 +46,17 @@ class Table extends Component {
      }
   }
 
+  //Modified by James Yoo
+  clearAll = () => {
+    for (let i=0; i<this.state.numRows; i++)
+    {
+      for (let j=0; j<this.state.numCols; j++)
+      {
+        this.setState({selectedColor:"white"});
+      }
+    }
+  }
+
   handleColorChange = (event) => {
     this.setState({selectedColor: event.target.value});
   }
@@ -65,6 +76,7 @@ class Table extends Component {
       <div>
         <button onClick={this.addRow}>Add Row</button>
         <button onClick={this.addColumn}>Add Column</button>
+        <button onClick={this.clearAll}>Clear All </button>
         <select onChange={this.handleColorChange}>
           <option value="red">red</option>
           <option value="blue">blue</option>
