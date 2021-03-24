@@ -82,6 +82,38 @@ class Table extends Component {
     }
   }
 
+  /***************** START REMOVE ROW METHOD  ***********************/
+  // Worked on by: IFTE AHMED
+  removeRow = () => {
+    if (this.state.numRows > 0) {
+      this.setState(state => { //removes 1 row
+        return { numRows: state.numRows - 1 }
+      });
+    }else{
+      alert("NOPE!") //alerts user that they cant remove no more
+      this.setState(state => { //resets the numCols value to zero
+        return { numCols: state.numCols = 0 }
+      });
+    }
+  }
+  /***************** END OF REMOVE ROW METHOD  ***********************/
+
+  /***************** START REMOVE COLUMN METHOD  ***********************/
+  //Worked on by: IFTE AHMED
+  removeCol = () => {
+    if (this.state.numCols > 0) {
+      this.setState(state => { //removes 1 column
+        return { numCols: state.numCols - 1 }
+      });
+    }else{
+      alert("NOPE!") //alerts user that they cant remove no more
+      this.setState(state => { //resets the numRows value to zero
+        return { numCols: state.numRows = 0 }
+      });
+    }
+  }
+  /***************** END OF REMOVE COLUMN METHOD  ***********************/
+  
   handleColorChange = (event) => {
     this.setState({selectedColor: event.target.value});
   }
@@ -102,7 +134,7 @@ class Table extends Component {
         <button onClick={this.addRow}>Add Row</button>
         <button onClick={this.addColumn}>Add Column</button>
         <button onClick={this.removeRow}>Remove Row</button>
-        <button onClick={this.removeColumn}>Remove Column</button>
+        <button onClick={this.removeCol}>Remove Column</button>
         <button onClick={this.clearAll}>Clear All </button>
         <button onClick={this.fillAll}> Fill All </button>
         <button onClick={this.fillAllU}>Fill Uncolored</button>
@@ -121,5 +153,3 @@ class Table extends Component {
     )
   }
 }
-
-export default Table;
