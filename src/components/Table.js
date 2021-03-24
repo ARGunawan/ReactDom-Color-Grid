@@ -46,6 +46,16 @@ class Table extends Component {
      }
   }
 
+  //Modified by James Yoo 
+  clearAll = () => 
+  {
+    for (let i=0; i<this.state.numRows*this.state.numCols; i++) //number of table cells is numrows*numcols
+    {
+      let tds=document.getElementsByTagName("td");  //Use the dom element to get the cells
+      tds[i].style.backgroundColor="white";         //reset the color for each of the cells throught this loop
+    }
+  }
+
   handleColorChange = (event) => {
     this.setState({selectedColor: event.target.value});
   }
@@ -65,6 +75,7 @@ class Table extends Component {
       <div>
         <button onClick={this.addRow}>Add Row</button>
         <button onClick={this.addColumn}>Add Column</button>
+        <button onClick={this.clearAll}>Clear All </button>
         <select onChange={this.handleColorChange}>
           <option value="red">red</option>
           <option value="blue">blue</option>
