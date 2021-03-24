@@ -46,13 +46,13 @@ class Table extends Component {
      }
   }
 
-    //Modified by James Yoo
+  //Modified by James Yoo
   //This function will fill all the cell's color to the selected color from the dropdown
   fillAll = () => 
   {
-    let tds=document.getElementsByTagName("td");            //Use the DOM element to get the cells
     for (let i=0; i<this.state.numRows*this.state.numCols; i++) //number of table cells is numrows*numcols
     {
+      let tds=document.getElementsByTagName("td");            //Use the DOM element to get the cells
       tds[i].style.backgroundColor=this.state.selectedColor;  //change the color for each of the cells through this loop
     }
   }
@@ -61,10 +61,24 @@ class Table extends Component {
   //This function will clear all the cell's current color to white. 
   clearAll = () => 
   {
-    let tds=document.getElementsByTagName("td");  //Use the DOM element to get the cells
     for (let i=0; i<this.state.numRows*this.state.numCols; i++) //number of table cells is numrows*numcols
     {
+      let tds=document.getElementsByTagName("td");  //Use the DOM element to get the cells
       tds[i].style.backgroundColor="white";         //reset the color for each of the cells through this loop
+    }
+  }
+
+  //Modified by Alfonso Gunawan
+  //This function will fill all the uncolored cells (white cells) to the selected color from the dropdown
+  fillAllU = () => 
+  {
+    let tds=document.getElementsByTagName("td");            //Use the DOM element to get the cells
+    for (let i=0; i<this.state.numRows*this.state.numCols; i++) //number of table cells is numrows*numcols
+    {
+      if (tds[i].style.backgroundColor === "" || tds[i].style.backgroundColor === "white")             //If condition to catch all the 
+      {
+        tds[i].style.backgroundColor=this.state.selectedColor;  //change the color for each of the cells through this loop
+      }
     }
   }
 
@@ -87,12 +101,18 @@ class Table extends Component {
       <div>
         <button onClick={this.addRow}>Add Row</button>
         <button onClick={this.addColumn}>Add Column</button>
+        <button onClick={this.removeRow}>Remove Row</button>
+        <button onClick={this.removeColumn}>Remove Column</button>
         <button onClick={this.clearAll}>Clear All </button>
         <button onClick={this.fillAll}> Fill All </button>
+        <button onClick={this.fillAllU}>Fill Uncolored</button>
         <select onChange={this.handleColorChange}>
+        <option value="select">select</option>
           <option value="red">red</option>
           <option value="blue">blue</option>
           <option value="yellow">yellow</option>
+          <option value="green">green</option>
+
         </select>
         <table>
           {rows}
