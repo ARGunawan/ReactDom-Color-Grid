@@ -49,10 +49,10 @@ class Table extends Component {
   //Modified by James Yoo 
   clearAll = () => 
   {
-    for (let i=0; i<this.state.numRows*this.state.numCols; i++)
+    for (let i=0; i<this.state.numRows*this.state.numCols; i++) //number of table cells is numrows*numcols
     {
-      let tds=document.getElementsByTagName("td");
-      tds[i].style.backgroundColor="white";
+      let tds=document.getElementsByTagName("td");  //Use the dom element to get the cells
+      tds[i].style.backgroundColor="white";         //reset the color for each of the cells throught this loop
     }
   }
 
