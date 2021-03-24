@@ -46,13 +46,25 @@ class Table extends Component {
      }
   }
 
+    //Modified by James Yoo
+  //This function will fill all the cell's color to the selected color from the dropdown
+  fillAll = () => 
+  {
+    for (let i=0; i<this.state.numRows*this.state.numCols; i++) //number of table cells is numrows*numcols
+    {
+      let tds=document.getElementsByTagName("td");            //Use the DOM element to get the cells
+      tds[i].style.backgroundColor=this.state.selectedColor;  //change the color for each of the cells through this loop
+    }
+  }
+  
   //Modified by James Yoo 
+  //This function will clear all the cell's current color to white. 
   clearAll = () => 
   {
     for (let i=0; i<this.state.numRows*this.state.numCols; i++) //number of table cells is numrows*numcols
     {
-      let tds=document.getElementsByTagName("td");  //Use the dom element to get the cells
-      tds[i].style.backgroundColor="white";         //reset the color for each of the cells throught this loop
+      let tds=document.getElementsByTagName("td");  //Use the DOM element to get the cells
+      tds[i].style.backgroundColor="white";         //reset the color for each of the cells through this loop
     }
   }
 
@@ -76,6 +88,7 @@ class Table extends Component {
         <button onClick={this.addRow}>Add Row</button>
         <button onClick={this.addColumn}>Add Column</button>
         <button onClick={this.clearAll}>Clear All </button>
+        <button onClick={this.fillAll}> Fill All </button>
         <select onChange={this.handleColorChange}>
           <option value="red">red</option>
           <option value="blue">blue</option>
