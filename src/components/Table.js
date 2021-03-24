@@ -50,9 +50,9 @@ class Table extends Component {
   //This function will fill all the cell's color to the selected color from the dropdown
   fillAll = () => 
   {
+    let tds=document.getElementsByTagName("td");            //Use the DOM element to get the cells
     for (let i=0; i<this.state.numRows*this.state.numCols; i++) //number of table cells is numrows*numcols
     {
-      let tds=document.getElementsByTagName("td");            //Use the DOM element to get the cells
       tds[i].style.backgroundColor=this.state.selectedColor;  //change the color for each of the cells through this loop
     }
   }
@@ -61,9 +61,9 @@ class Table extends Component {
   //This function will clear all the cell's current color to white. 
   clearAll = () => 
   {
+    let tds=document.getElementsByTagName("td");  //Use the DOM element to get the cells
     for (let i=0; i<this.state.numRows*this.state.numCols; i++) //number of table cells is numrows*numcols
     {
-      let tds=document.getElementsByTagName("td");  //Use the DOM element to get the cells
       tds[i].style.backgroundColor="white";         //reset the color for each of the cells through this loop
     }
   }
