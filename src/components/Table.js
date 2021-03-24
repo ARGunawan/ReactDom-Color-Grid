@@ -46,14 +46,13 @@ class Table extends Component {
      }
   }
 
-  //Modified by James Yoo
-  clearAll = () => {
-    for (let i=0; i<this.state.numRows; i++)
+  //Modified by James Yoo 
+  clearAll = () => 
+  {
+    for (let i=0; i<this.state.numRows*this.state.numCols; i++)
     {
-      for (let j=0; j<this.state.numCols; j++)
-      {
-        this.setState({selectedColor:"white"});
-      }
+      let tds=document.getElementsByTagName("td");
+      tds[i].style.backgroundColor="white";
     }
   }
 
