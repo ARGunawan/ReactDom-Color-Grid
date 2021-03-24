@@ -82,6 +82,20 @@ class Table extends Component {
     }
   }
 
+  /***************** START REMOVE ROW METHOD  ***********************/
+  removeRow = () => {
+    if (this.state.numRows > 0) {
+      this.setState(state => { //removes 1 row
+        return { numRows: state.numRows - 1 }
+      });
+    }else{
+      alert("NOPE!") //alerts user that they cant remove no more
+      this.setState(state => { //resets the numCols value to zero
+        return { numCols: state.numCols = 0 }
+      });
+    }
+  }
+  /***************** END OF REMOVE ROW METHOD  ***********************/
   handleColorChange = (event) => {
     this.setState({selectedColor: event.target.value});
   }
